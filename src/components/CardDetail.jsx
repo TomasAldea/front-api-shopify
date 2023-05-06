@@ -115,7 +115,7 @@ export const CardDetail = () => {
                 />
 
                 :
-                <img className='loading' src="loading.gif"></img>
+                null
             }
             <h1 className='mobile'>{cardDetail && cardDetail.title}</h1>
 
