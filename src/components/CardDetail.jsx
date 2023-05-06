@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Carousel } from 'react-carousel-minimal';
+import AOS from "aos";
 
 
 export const CardDetail = () => {
@@ -12,7 +13,7 @@ export const CardDetail = () => {
     //? mediaquery para prop del carrusel
     const isMobile = window.innerWidth > 900;
     const carouselWidth = isMobile ? "850px" : "100%";
-    const carouselHeight = isMobile ? "600px" : "373px";
+    const carouselHeight = isMobile ? "600px" : "300px";
 
     //! esto hay que mejorarlo
     async function fetchData() {
@@ -31,6 +32,7 @@ export const CardDetail = () => {
         }));
 
         setCarousel(carouselArr)
+        AOS.init();
     }
 
     const selectItem = (id, price) => {
@@ -45,8 +47,6 @@ export const CardDetail = () => {
         fetchData();
     }, []);
 
-    console.log(cardDetail);
-
     const captionStyle = {
         fontSize: '2em',
         fontWeight: 'bold',
@@ -57,10 +57,10 @@ export const CardDetail = () => {
     }
 
     return (
-        <div className='detail-card'>
-           
+        <div className='detail-card' data-aos-delay="300" data-aos-duration="1000" data-aos="fade-in">
+
             <Link className='goback' to="/">↩ Volver</Link>
-            {cardDetail ?
+            {(cardDetail && cardDetail.variants.length > 1) ?
                 <div className='info-container'>
                     <h1 className='desktop'>{cardDetail.title}</h1>
                     <h2>Elige una opción</h2>
@@ -72,7 +72,11 @@ export const CardDetail = () => {
                     <div className='price'>Total: <span> {total}</span> €</div>
                 </div>
                 :
-                null
+                <div className='info-container'>
+                    <h1 className='desktop'>{cardDetail && cardDetail.title}</h1>
+                    <h2>Disponible una sola opción</h2>
+                    <div className={`price ${cardDetail?.variants.length > 1 ? '' :'extra-margin'}`}>Total: <span> {total}</span> €</div>
+                </div>
             }
             {carousel.length > 0 ?
 
@@ -105,7 +109,7 @@ export const CardDetail = () => {
 
                 :
                 <img className='loading' src="loading.gif"></img>
-                }
+            }
             <h1 className='mobile'>{cardDetail && cardDetail.title}</h1>
 
         </div>

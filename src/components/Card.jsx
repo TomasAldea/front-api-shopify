@@ -7,7 +7,6 @@ export const Card = ({ product }) => {
     const [lowestPrice, setLowestPrice] = useState();
 
     useEffect(() => {
-
         AOS.init();
     }, []);
 
@@ -25,16 +24,16 @@ export const Card = ({ product }) => {
 
 
     return (
-        <div className="product-card" data-aos-delay="300" data-aos-duration="500" data-aos="fade-up">
+        <Link to={`/detail/${product.id}`} state={{ product }} className="product-card" data-aos-delay="0" data-aos-duration="500" data-aos="fade-up">
             {product.image ? (
-                <img src={product.image['src']} alt="Product Image" />
+                <img src={product.image['src']} alt={product.image['alt']} />
             ) :
-                <img src="No_Image_Available.jpg" alt="Product Image" />
+                <img src="No_Image_Available.jpg" alt="No_Image_Available" />
             }
 
             <h2>{product.title}</h2>
-            <span>Price: {lowestPrice} €</span>
-            <Link to={`/detail/${product.id}`} state={{ product }}>More info ➞</Link>
-        </div>
+            <span>Precio: {lowestPrice} €</span>
+            <div>Más info ➞</div>
+        </Link>
     )
 }

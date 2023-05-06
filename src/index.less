@@ -37,11 +37,14 @@ body {
     padding: 20px;
     border-radius: 8px;
     padding-top: 10px;
-    font-family: "Open Sans", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    text-decoration: none;
+    * {
+      font-family: "Open Sans", sans-serif;
+      color: black;
+    }
     h2 {
       font-size: 18px;
       margin-bottom: 10px;
@@ -56,10 +59,7 @@ body {
       font-size: 16px;
       font-weight: bold;
     }
-    a {
-      font-family: "Open Sans", sans-serif;
-      text-decoration: none;
-      color: black;
+    div {
       margin-top: 10px;
     }
     img {
@@ -89,7 +89,7 @@ body {
   .container { 
     * {
       text-decoration: none;
-      color: white;
+      color: black;
       font-family: "Open Sans", sans-serif;
     }
     width: 90%;
@@ -101,12 +101,16 @@ body {
     
   }
 }
+
+//? DETAIL CARD
 .detail-card {
   padding: 20px;
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: row-reverse;
-
+  .mobile {
+    display: none;
+  }
   .goback {
     position: fixed;
     top: 10px;
@@ -119,6 +123,7 @@ body {
     display: flex;
     flex-direction: column;
     align-self: end;
+    max-width: 441px;
     h2 {
       font-size: 24px;
       margin-bottom: 10px;
@@ -155,14 +160,14 @@ body {
     overflow-x: hidden;
     .box {
       margin: 0 !important;
-      max-height: 375px !important;
+      max-height: 300px !important;
       .carousel-container {
-        max-height: 430px !important;
+        max-height: 390px !important;
       }
       .carousel-image {
-        height: 373px;
+        height: 300px;
         img {
-          height: 373px;
+          height: 300px;
         }
       }
       .dots {
@@ -185,7 +190,7 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding-inline-start: 10px;
+        //padding-inline-start: 21px;
         li {
           width: 50%;
           &::marker {
@@ -194,8 +199,11 @@ body {
         }
       }
       .price {
-        margin-top: 15px;
+        margin-top: -7px;
         font-size: 20px;
+        &.extra-margin {
+          margin-top: 15px;
+        }
       }
       .desktop {
         display: none;

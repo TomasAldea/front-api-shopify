@@ -16,7 +16,7 @@ export const Products = () => {
 
     return (
         <section className='mdl-products'>
-            <h1 className='grid-title'>Products list</h1>
+            <h1 className='grid-title'>Listado de productos</h1>
             {
                 products.length < 1 && <img className='loading' src="loading.gif"></img>
             }
