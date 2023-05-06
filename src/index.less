@@ -1,0 +1,210 @@
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #e2e9ff;
+}
+
+.mdl-products {
+  padding: 2rem 0 6rem 0;
+  .grid-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-gap: 20px;
+    text-align: center;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .product-card {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    padding-top: 10px;
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    a {
+      font-family: "Open Sans", sans-serif;
+      text-decoration: none;
+      color: black;
+      margin-top: 10px;
+    }
+    img {
+      border-radius: 8px;
+      max-width: 100%; /* Ancho máximo igual al ancho de la tarjeta */
+      height: auto; /* Altura fija de 60px */
+      margin-bottom: 10px; /* Margen inferior opcional para separar la imagen del contenido */
+    }
+  }
+}
+.loading {
+  width: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 900px) {
+    width: 100px;
+  }
+}
+.mdl-footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #c2cceb;
+  width: 100vw;
+  left: 0;
+  .container { 
+    * {
+      text-decoration: none;
+      color: white;
+      font-family: "Open Sans", sans-serif;
+    }
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    
+  }
+}
+.detail-card {
+  padding: 20px;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+
+  .goback {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+    color: black;
+  }
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-self: end;
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: "Montserrat", sans-serif;
+    }
+    .price {
+      font-size: 30px;
+      font-family: "Open Sans", sans-serif;
+      margin-top: 3rem;
+      span {
+        font-weight: bold;
+      }
+    }
+    ul {
+      li {
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 600px;
+  }
+  .thumbnails {
+    justify-content: center;
+  }
+  @media (max-width: 900px) {
+    flex-direction: column-reverse;
+    overflow-x: hidden;
+    .box {
+      margin: 0 !important;
+      max-height: 375px !important;
+      .carousel-container {
+        max-height: 430px !important;
+      }
+      .carousel-image {
+        height: 373px;
+        img {
+          height: 373px;
+        }
+      }
+      .dots {
+        bottom: -2px;
+      }
+    }
+    .thumbnails {
+      opacity: 0;
+      z-index: -999;
+    }
+    .info-container {
+      align-items: center;
+      align-self: center;
+      width: 100%;
+      h2 {
+        font-size: 19px;
+        margin-bottom: 2px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-inline-start: 10px;
+        li {
+          width: 50%;
+          &::marker {
+            content: none;
+          }
+        }
+      }
+      .price {
+        margin-top: 15px;
+        font-size: 20px;
+      }
+      .desktop {
+        display: none;
+      }
+    }
+    .mobile {
+      display: flex;
+      font-size: 20px;
+      align-self: center;
+    }
+  }
+}
