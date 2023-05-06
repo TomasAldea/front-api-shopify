@@ -1,12 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Card } from './Card';
 import { ProviderContext } from '../context/ProviderContext';
 
 export const Products = () => {
     const { products } = useContext(ProviderContext);
-
-    useEffect(() => {        
-    }, [products])
 
     return (
         <section className='mdl-products'>
