@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Carousel } from 'react-carousel-minimal';
 import AOS from "aos";
+import { ProviderContext } from '../context/ProviderContext';
 
 
 export const CardDetail = () => {
+    const { products } = useContext(ProviderContext);
+
     const [cardDetail, setCardDetail] = useState();
     const [carousel, setCarousel] = useState([]);
     const [total, setTotal] = useState('');
@@ -16,11 +19,9 @@ export const CardDetail = () => {
     const carouselHeight = isMobile ? "600px" : "300px";
 
     //! esto hay que mejorarlo
-    async function fetchData() {
+    const printDetail = (products) => {
 
-        const result = await fetch('https://api-shopify-gamma.vercel.app/api/products');
-        const { data } = await result.json();
-        const cardInfo = data.products.find((product) => product.id == productId);
+        const cardInfo = products.find((product) => product.id == productId);
 
         setCardDetail(cardInfo);
         setTotal(cardInfo.variants[0].price)
@@ -44,7 +45,7 @@ export const CardDetail = () => {
     }
 
     useEffect(() => {
-        fetchData();
+        printDetail(products);
     }, []);
 
     const captionStyle = {

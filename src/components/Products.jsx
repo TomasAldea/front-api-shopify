@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Card } from './Card';
+import { ProviderContext } from '../context/ProviderContext';
 
 export const Products = () => {
-    const [products, setProducts] = useState([]);
+    const { products } = useContext(ProviderContext);
 
-    async function fetchData() {
-        const result = await fetch('https://api-shopify-gamma.vercel.app/api/products');
-        const { data } = await result.json();
-        setProducts(data.products);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    useEffect(() => {        
+    }, [products])
 
     return (
         <section className='mdl-products'>
             <h1 className='grid-title'>Listado de productos</h1>
             {
-                products.length < 1 && <img className='loading' src="loading.gif"></img>
+                products && <img className='loading' src="loading.gif"></img>
             }
             <div className="product-grid">
-                {products.map((product, index) => (
+                {products?.map((product, index) => (
                     <Card key={index} product={product} />
                 ))}
             </div>
