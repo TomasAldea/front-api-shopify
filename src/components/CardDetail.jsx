@@ -51,7 +51,6 @@ export const CardDetail = () => {
     useEffect(() => {
         printDetail(products);
     }, [products]);
-    console.log(cardDetail);
 
     const captionStyle = {
         fontSize: '2em',
@@ -64,7 +63,7 @@ export const CardDetail = () => {
 
     return (
 
-        <div className='detail-card' data-aos-delay="300" data-aos-duration="1000" data-aos="fade-in">
+        <div className='detail-card' data-aos-delay="300" data-aos-duration="700" data-aos="fade-in">
 
             <Link className='goback' to="/">↩ Volver</Link>
             {(cardDetail && cardDetail.variants.length > 1) ?
