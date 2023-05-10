@@ -9,8 +9,7 @@ function App() {
   const [serverResponse, setServerResponse] = useState(false);
 
   async function fetchData() {
-    const result = await fetch('http://localhost:3900/api/products');
-    //const result = await fetch('https://api-shopify-gamma.vercel.app/api/products');
+    const result = await fetch('https://api-shopify-gamma.vercel.app/api/products');
 
     const { data, status } = await result.json();
 
